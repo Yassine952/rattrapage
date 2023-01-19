@@ -1,0 +1,11 @@
+/: 
+  controller: User
+  action: register
+
+/user:
+  controller: User
+  action: allUser
+
+/logout:
+  controller: User
+  action: logout 
