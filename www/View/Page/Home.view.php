@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Créez votre site esport en deux clics !" />
   
-  <title>E-teams</title>
-  <link rel="icon" type="image/png" sizes="16x16" href="/Public/img/logo_sm.svg">
+  <title>Rattrapage</title>
+  
 </head>
 
 <body>
