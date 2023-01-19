@@ -6,6 +6,11 @@
   controller: User
   action: allUser
 
+
+/user/delete:
+  controller: User
+  action: deleteUsers
+
 /logout:
   controller: User
   action: logout 

@@ -36,7 +36,7 @@
                     <td><?php echo $user["email"];?></td>
                     <?php if($decodedJWT["payload"][0] != $user["id"]){ ?>
                         <td><a href="/user?modify=<?php echo $user['id']?>">Modifier</a></td>
-                        <td><a href="/user?del=<?php echo $user['id']?>">Supprimer</a></td>
+                        <td><a href="/user/delete?del=<?php echo $user['id']?>">Supprimer</a></td>
                     <?php } ?>
                     </tr>
                 <?php endforeach ;?>

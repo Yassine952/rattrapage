@@ -60,10 +60,7 @@ class User{
                     $user->setEmail($_POST['mail']);
                     $user_data = $user->findUserByEmail($user->getEmail());
                    
-                    var_dump($user_data['pwd']);
-                    var_dump(password_hash($_POST["pwd"],PASSWORD_DEFAULT));
-                    var_dump(password_verify($_POST['pwd'],$user_data["pwd"]));
-                    var_dump($user_data);
+
                     if($user_data && password_verify($_POST['pwd'],$user_data['pwd'])){
                         
                         $user->setId($user_data['id']);
@@ -135,11 +132,7 @@ class User{
                 }
                
                 
-            }
-            
-            
-            
-        
+            }   
            
         }
         $decodedJWT = $security->decodeJWT($_COOKIE['jwt']);
@@ -150,23 +143,6 @@ class User{
             echo "Veuillez confirmer votre email"; 
       
         }
-
-
-
-        
-
-        // DELETE 
-
-        if (isset($_GET['del'])){
-			$id = $_GET['del'];
-            
-            if($decodedJWT["payload"][0]==$id){
-                header("Location: /user");
-            }
-            else{
-			$user->delete('id',$id);
-            }
-		}
 
         // Update
 
@@ -220,6 +196,29 @@ class User{
 
 
     
+    }
+    
+    public function deleteUsers(){
+
+        $user = new Users();
+        
+
+        $security = new Security();
+        $decodedJWT = $security->decodeJWT($_COOKIE['jwt']);
+
+        if (isset($_GET['del'])){
+			$id = $_GET['del'];
+            
+            if($decodedJWT["payload"][0]==$id){
+                header("Location: /user");
+            }
+            else{
+			$user->delete('id',$id);
+            
+            }
+		}
+        header("Location: /user");
+
     }
     
   
