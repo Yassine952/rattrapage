@@ -50,27 +50,16 @@
       foreach($configUpdateFormErrors as $updateError){
         echo $updateError;?><br><?php
       } 
-    $this->includeComponent("form", $updateForm);
-    
-    print_r($tabUser)?>
+    $this->includeComponent("form", $updateForm);?>
     
     
-    <?php /* <form method="post">
-        <input type="text" name="firstname" value="<?php echo $tabUser['firstname'];?>" required>
-        <input type="text" name="lastname" value="<?php echo $tabUser['lastname'];?>" required>
-        <input type="date" name="birthday" value="<?php echo $tabUser['birthday'];?>" required>
-        <input type="email" name="email" value="<?php echo $tabUser['email'];?>" required>
-        <input type="password" name="pwd" value="<?php echo $tabUser["pwd"];?>" required>
-        <input type="submit" name="updateUser" value="Update">  
-    </form>*/?>
+    
     
         <?php }?>
 
     </table>
 
-    <a href="/logout">testlogout</a>
-
-    <?php print_r($decodedJWT["payload"]["5"]) ?>
+    <a href="/logout">LOG OUT</a>
 
 </main> 
 

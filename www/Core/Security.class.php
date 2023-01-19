@@ -12,10 +12,10 @@ class Security{
     public function createJWT(array $data){
         $header = base64_encode(json_encode(array("alg"=>"HS512","typ"=>"JWT")));
         $payload = base64_encode(json_encode($data));
-        $secret = base64_encode(json_encode('maCleSecrete'));
+        $secret = base64_encode(json_encode('secretkey'));
         $signature = hash_hmac('sha512',$header.".".$payload,$secret);
 
-        $this->token = $header.".".$payload.".".$signature.".";
+        $this->token = $header.".".$payload.".".$signature;
     }
 
     public function getExpireClaim(){

@@ -62,17 +62,20 @@ class User{
                    
 
                     if($user_data && password_verify($_POST['pwd'],$user_data['pwd'])){
-                        
-                        $user->setId($user_data['id']);
-                        $user->setFirstname($user_data['firstname']);
-                        $user->setLastname($user_data['lastname']);
-                        $user->setBirthday($user_data['birthday']);
-                        $user->setConfirmation($user_data['confirmation']);
-                        $security = new Security();
-                        $security->createJWT([$user_data['id'], $user->getFirstname(), $user->getLastname(), $user->getEmail(), $user->getBirthday(),$user_data['confirmation']]);
-                        setcookie("jwt",$security->getToken(), $security->getExpireClaim());
-                        header("Location: /user");
-                        
+                        if($user_data["confirmation"] == 1){
+                            $user->setId($user_data['id']);
+                            $user->setFirstname($user_data['firstname']);
+                            $user->setLastname($user_data['lastname']);
+                            $user->setBirthday($user_data['birthday']);
+                            $user->setConfirmation($user_data['confirmation']);
+                            $security = new Security();
+                            $security->createJWT([$user_data['id'], $user->getFirstname(), $user->getLastname(), $user->getEmail(), $user->getBirthday(),$user_data['confirmation']]);
+                            setcookie("jwt",$security->getToken(), $security->getExpireClaim());
+                            header("Location: /user");
+                        }
+                        else{
+                            $configLoginFormErrors[] = "Veuillez confirmer votre mail";
+                        }
                     }
                     else{
                         $configLoginFormErrors[] = "Email ou mot de passe incorrect";
